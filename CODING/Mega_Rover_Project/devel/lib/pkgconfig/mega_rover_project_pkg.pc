@@ -1,0 +1,8 @@
+prefix=/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel
+
+Name: mega_rover_project_pkg
+Description: Description of mega_rover_project_pkg
+Version: 0.0.0
+Cflags: -I/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel/include
+Libs: -L${prefix}/lib 
+Requires: rospy std_msgs message_runtime

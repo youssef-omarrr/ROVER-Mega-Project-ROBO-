@@ -1,0 +1,2 @@
+mega_rover_project_pkg
+-DCATKIN_DEVEL_PREFIX=/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel -DCMAKE_INSTALL_PREFIX=/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/install -G Unix Makefiles
