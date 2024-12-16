@@ -67,14 +67,14 @@ set(mega_rover_project_pkg_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(mega_rover_project_pkg_SOURCE_PREFIX /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src/mega_rover_project_pkg)
-  set(mega_rover_project_pkg_DEVEL_PREFIX /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel)
+  set(mega_rover_project_pkg_SOURCE_PREFIX /mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/src/mega_rover_project_pkg)
+  set(mega_rover_project_pkg_DEVEL_PREFIX /mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel)
   set(mega_rover_project_pkg_INSTALL_PREFIX "")
   set(mega_rover_project_pkg_PREFIX ${mega_rover_project_pkg_DEVEL_PREFIX})
 else()
   set(mega_rover_project_pkg_SOURCE_PREFIX "")
   set(mega_rover_project_pkg_DEVEL_PREFIX "")
-  set(mega_rover_project_pkg_INSTALL_PREFIX /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/install)
+  set(mega_rover_project_pkg_INSTALL_PREFIX /mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/install)
   set(mega_rover_project_pkg_PREFIX ${mega_rover_project_pkg_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/install/lib;/opt/ros/melodic/lib)
+    foreach(path /mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/install/lib;/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

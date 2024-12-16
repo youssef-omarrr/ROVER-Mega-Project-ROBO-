@@ -1,0 +1,10 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ]
+}

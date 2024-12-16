@@ -16,6 +16,8 @@ find_package(catkin REQUIRED COMPONENTS
   nav_msgs
 )
 
+
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -53,14 +55,14 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   custom_msg.msg
+  SPI_data.msg
 )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  GetDataGUI.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(

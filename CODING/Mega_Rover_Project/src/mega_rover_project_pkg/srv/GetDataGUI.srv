@@ -1,0 +1,5 @@
+#request msg
+string ROVER_data
+---
+#response msg
+string GUI_data

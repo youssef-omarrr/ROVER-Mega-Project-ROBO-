@@ -1,0 +1,2 @@
+string SPI_send
+string SPI_get
