@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/src"
+CMAKE_SOURCE_DIR = /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/build"
+CMAKE_BINARY_DIR = /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/build
 
 # Utility rule file for doxygen.
 
@@ -67,6 +67,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/src" "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/src" "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/build" "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/build" "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/build/CMakeFiles/doxygen.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/build /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/build /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

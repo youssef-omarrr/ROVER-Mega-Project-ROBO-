@@ -1,0 +1,11 @@
+<launch>
+  <!-- Load EKF parameters before starting the node -->
+  <rosparam file="$(find mega_rover_project_pkg)/config/ekf_config.yaml" command="load" ns="ekf_localization_node" />
+
+  <!-- Start the EKF localization node -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_node" output="screen" respawn="true">
+    <param name="odom_frame" value="odom" />
+    <param name="base_link_frame" value="base_link" />
+    <param name="world_frame" value="odom" />
+  </node>
+</launch>

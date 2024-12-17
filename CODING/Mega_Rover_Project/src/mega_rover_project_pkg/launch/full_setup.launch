@@ -1,0 +1,13 @@
+<launch>
+  <!-- Launch IMU Publisher -->
+  <node pkg="mega_rover_project_pkg" type="imuTest.py" name="imu_publisher" output="screen" />
+
+  <!-- Launch Odometry Publisher -->
+  <node pkg="mega_rover_project_pkg" type="encodersTest.py" name="encoders_publisher" output="screen" />
+
+  <!-- Launch EKF Localization Node -->
+  <include file="$(find mega_rover_project_pkg)/launch/ekf_launch.launch" />
+
+  <!-- Launch Filtered Values Presenter -->
+  <node pkg="mega_rover_project_pkg" type="filtered_values_presenterTest.py" name="filtered_values_presenter" output="screen" />
+</launch>

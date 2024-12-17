@@ -67,14 +67,14 @@ set(mega_rover_project_pkg_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(mega_rover_project_pkg_SOURCE_PREFIX /mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/src/mega_rover_project_pkg)
-  set(mega_rover_project_pkg_DEVEL_PREFIX /mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel)
+  set(mega_rover_project_pkg_SOURCE_PREFIX /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src/mega_rover_project_pkg)
+  set(mega_rover_project_pkg_DEVEL_PREFIX /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel)
   set(mega_rover_project_pkg_INSTALL_PREFIX "")
   set(mega_rover_project_pkg_PREFIX ${mega_rover_project_pkg_DEVEL_PREFIX})
 else()
   set(mega_rover_project_pkg_SOURCE_PREFIX "")
   set(mega_rover_project_pkg_DEVEL_PREFIX "")
-  set(mega_rover_project_pkg_INSTALL_PREFIX /mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/install)
+  set(mega_rover_project_pkg_INSTALL_PREFIX /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/install)
   set(mega_rover_project_pkg_PREFIX ${mega_rover_project_pkg_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(mega_rover_project_pkg_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/include " STREQUAL " ")
+if(NOT "/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel/include " STREQUAL " ")
   set(mega_rover_project_pkg_INCLUDE_DIRS "")
-  set(_include_dirs "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/include")
+  set(_include_dirs "/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/include " 
         message(FATAL_ERROR "Project 'mega_rover_project_pkg' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'mega_rover_project_pkg' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/src/mega_rover_project_pkg/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'mega_rover_project_pkg' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src/mega_rover_project_pkg/${idir}'.  ${_report}")
     endif()
     _list_append_unique(mega_rover_project_pkg_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/lib;/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel/lib;/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

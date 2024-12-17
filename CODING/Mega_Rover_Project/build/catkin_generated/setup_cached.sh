@@ -7,3 +7,4 @@
 # new environment variables
 
 # modified environment variables
+export PWD='/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/build'
