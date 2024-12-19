@@ -43,19 +43,28 @@ void setup() {
 }
 
 void loop() {
-  // Test SPI by sending and receiving a byte
-  uint8_t dataToSend = 42;  // Test byte to send
-  spi.send_data(dataToSend);
-  uint8_t receivedData = spi.get_data();
+  // Test SPI
+  uint8_t L3X = spi.receive_data();
+  uint8_t L3Y = spi.receive_data();
   
-  Serial.print("Sent data: ");
-  Serial.print(dataToSend);
-  Serial.print(", Received data: ");
-  Serial.println(receivedData);
+  // Print received data
+  Serial.print("Received L3X: ");
+  Serial.print(L3X);
+  Serial.print(", L3Y: ");
+  Serial.println(L3Y);
 
-  // Test metal detection and handle detection
-  metalDetector.handleDetection();
-  
+  if (metalDetected.handleDetection()) {
+    // Send a flag (1) via SPI to indicate metal is detected
+    uint8_t detectionFlag = 1; // Metal detected
+    spi.send_data(detectionFlag);
+    
+    Serial.println("Metal detected! Flag sent via SPI.");
+  } 
+  else {    
+
+    Serial.println("No metal detected. Flag sent via SPI.");
+  }
+
   // Small delay to avoid spamming
   delay(500);
 }

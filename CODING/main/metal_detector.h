@@ -13,5 +13,5 @@ public:
   void begin();
 
   // Perform an action when metal is detected
-  void handleDetection();
+  bool handleDetection();
 };

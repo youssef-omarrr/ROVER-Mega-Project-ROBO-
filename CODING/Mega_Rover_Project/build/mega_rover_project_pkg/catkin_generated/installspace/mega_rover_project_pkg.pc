@@ -1,4 +1,4 @@
-prefix=/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/install
+prefix=/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/install
 
 Name: mega_rover_project_pkg
 Description: Description of mega_rover_project_pkg

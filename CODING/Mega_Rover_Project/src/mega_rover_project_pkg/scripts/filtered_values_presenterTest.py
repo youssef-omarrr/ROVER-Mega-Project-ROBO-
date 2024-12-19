@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+'''
+- This ROS node subscribes to the /odometry/filtered topic.
+- processes incoming odometry data.
+- converts the quaternion orientation to Euler angles.
+- It then logs the filtered position and orientation data (roll, pitch, yaw).
+
+'''
+
 import rospy
 from nav_msgs.msg import Odometry
 import math

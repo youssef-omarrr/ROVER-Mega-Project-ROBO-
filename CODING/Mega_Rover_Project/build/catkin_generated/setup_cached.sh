@@ -7,4 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/build'
+export CMAKE_PREFIX_PATH="/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel:$CMAKE_PREFIX_PATH"
+export PWD='/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/build'
+export ROSLISP_PACKAGE_DIRECTORIES='/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/src:$ROS_PACKAGE_PATH"

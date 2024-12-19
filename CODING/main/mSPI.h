@@ -17,5 +17,5 @@ public:
   void send_data(uint8_t data);
 
   // Receive data of type uint8_t over SPI
-  uint8_t get_data();
+  uint8_t receive_data();
 };

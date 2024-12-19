@@ -25,9 +25,12 @@ void MetalDetector::handleDetection() {
   // If the sensor is detecting metal, control the buzzer with the PWM value
   if (sensorValue > tolerance) {  // If sensor is detecting metal
     Serial.print("Metal detected! PWM Value: ");
+    Serial.print("sensor value = ");
     Serial.println(sensorValue);
     analogWrite(buzzerPIN, pwmValue);  // Control the buzzer intensity based on the sensor reading
+    return true;
   } else {
     analogWrite(buzzerPIN, 0);  // No metal detected, turn off the buzzer
+    return false;
   }
 }

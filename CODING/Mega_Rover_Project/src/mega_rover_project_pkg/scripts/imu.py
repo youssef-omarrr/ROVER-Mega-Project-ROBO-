@@ -1,4 +1,19 @@
 #!/usr/bin/env python3
+
+"""
+This script interfaces with the MPU6050 IMU sensor over I2C and publishes data via ROS topics:
+1. **Initialization**: Sets up I2C communication and the MPU6050 sensor.
+
+2. **ROS Setup**: Initializes a ROS node with publishers for IMU data (`/imu/data`) and yaw (`/imu/yaw`).
+
+3. **Data Processing**: Collects accelerometer and gyroscope data, estimates yaw, and publishes at 50 Hz.
+
+4. **Testing**: Uses `ImuStub` to generate dummy data for testing (10 Hz).
+
+The script collects and publishes IMU and yaw data, 
+with a fallback for testing when the sensor is unavailable.
+"""
+
 import rospy
 from std_msgs.msg import Float64
 from std_msgs.msg import Float32
@@ -8,7 +23,6 @@ import busio
 import adafruit_mpu6050
 import time
 import random
-
 
 class Imu:
     def __init__(self):

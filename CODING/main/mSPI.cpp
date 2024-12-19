@@ -30,10 +30,17 @@ void mSPI::send_data(uint8_t data) {
   digitalWrite(PIN_CS, HIGH);                // Deselect the device
 }
 
-// Receive data of type uint8_t over SPI
-uint8_t mSPI::get_data() {
-  digitalWrite(PIN_CS, LOW);                    // Select the device
-  uint8_t receivedData = SPI.transfer(0x00);    // Dummy send to receive data
-  digitalWrite(PIN_CS, HIGH);                   // Deselect the device
-  return receivedData;
+// Receive data of type uint8_t (L3X, L3Y) over SPI
+uint8_t mSPI::receive_data() {
+  // Select the device
+  digitalWrite(PIN_CS, LOW);
+  
+  // Receive data: Assuming 2 bytes are being sent for L3X and L3Y
+  uint8_t data = SPI.transfer(0x00);  // Send dummy byte to receive data
+
+  // Deselect the device
+  digitalWrite(PIN_CS, HIGH);
+
+ 
+  return data;
 }

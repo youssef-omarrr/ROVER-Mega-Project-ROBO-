@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 
-# Subscribe to 'rostoweb/mine' and receive mine flag
-# Subscribe to 'odometry/filtered and Read (x,y)
-# Add to a Localization Stack 
-# Publish to a Localization Stack Node
+'''
+-This node subscribes to mine flags and odometry data, 
+updating and publishing the localization stack.
 
+-It stores the mine flag with the current position, 
+and publishes the stack.
+
+Subscribe to 'rostoweb/mine' and receive mine flag
+Subscribe to 'odometry/filtered and Read (x,y)
+Add to a Localization Stack 
+Publish to a Localization Stack Node
+'''
 import rospy
 from mega_rover_project_pkg.msg import mine
 from mega_rover_project_pkg import localization_stack

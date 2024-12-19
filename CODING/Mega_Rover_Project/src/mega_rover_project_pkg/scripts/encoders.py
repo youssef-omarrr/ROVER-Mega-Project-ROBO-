@@ -1,4 +1,22 @@
 #!/usr/bin/env python3
+
+'''
+This script interfaces with an encoder system and IMU sensor to compute and publish odometry data:
+1. **Encoder Initialization**: Uses Hall sensors to track wheel rotations and compute distance.
+
+2. **Yaw Handling**: Yaw angle is obtained from the IMU sensor and used to update rover position.
+
+3. **Odometry Calculation**: Distance traveled is calculated, and robot's x, y, and yaw are updated.
+
+4. **Odometry Publishing**: Published odometry data to '/encoder/odom' for fusion with EKF.
+
+5. **Testing**: `EncoderStub` simulates encoder data and yaw for testing purposes.
+
+The script combines encoder data and IMU yaw to estimate and publish the robot's position in real-time.
+'''
+
+
+
 import rospy
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Quaternion
@@ -20,7 +38,9 @@ class Encoder:
 
         # ROS Node Initialization
         rospy.init_node('encoder_publisher', anonymous=True)
+        # pub to encoder/odom
         self.odom_pub = rospy.Publisher('/encoder/odom', Odometry, queue_size=10)
+        # sub to imu/yaw
         rospy.Subscriber('/imu/yaw', Float64, self.yaw_callback)
 
         # Set Hall Sensors' Pins Mode
