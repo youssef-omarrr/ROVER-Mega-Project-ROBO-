@@ -1,10 +1,14 @@
 
 "use strict";
 
-let custom_msg = require('./custom_msg.js');
+let localization_stack = require('./localization_stack.js');
+let mine = require('./mine.js');
 let SPI_data = require('./SPI_data.js');
+let controller = require('./controller.js');
 
 module.exports = {
-  custom_msg: custom_msg,
+  localization_stack: localization_stack,
+  mine: mine,
   SPI_data: SPI_data,
+  controller: controller,
 };

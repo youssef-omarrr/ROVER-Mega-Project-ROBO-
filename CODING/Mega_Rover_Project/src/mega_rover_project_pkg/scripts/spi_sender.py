@@ -3,6 +3,8 @@
 import rospy
 import spidev
 from mega_rover_project_pkg.msg import SPI_data
+# Subscribe to 'webtoros' -> Receive 'controller' custom message -> Send Controller (L3X & L3Y) To ESP via SPI
+from mega_rover_project_pkg.msg import controller
 
 class SPISender:
     def __init__(self):

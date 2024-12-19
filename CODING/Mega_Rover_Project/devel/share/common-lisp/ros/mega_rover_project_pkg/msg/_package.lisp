@@ -3,7 +3,11 @@
   (:export
    "<SPI_DATA>"
    "SPI_DATA"
-   "<CUSTOM_MSG>"
-   "CUSTOM_MSG"
+   "<CONTROLLER>"
+   "CONTROLLER"
+   "<LOCALIZATION_STACK>"
+   "LOCALIZATION_STACK"
+   "<MINE>"
+   "MINE"
   ))
 

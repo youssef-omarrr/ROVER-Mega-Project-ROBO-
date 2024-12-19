@@ -7,7 +7,7 @@ import math
 class FilteredOdometryPresenter:
     def __init__(self):
         # Initialize the ROS node
-        rospy.init_node('filtered_values_presenter', anonymous=True)
+        rospy.init_node('filtered_values_presenter', anonymous=False)
         
         # Subscribe to the /odometry/filtered topic
         rospy.Subscriber('/odometry/filtered', Odometry, self.odometry_callback)
@@ -16,6 +16,8 @@ class FilteredOdometryPresenter:
 
     def odometry_callback(self, msg):
         """Callback function to process incoming odometry messages."""
+        rospy.loginfo("Received odometry data.")  # Check if the callback is triggered
+
         # Extract position data
         x = msg.pose.pose.position.x
         y = msg.pose.pose.position.y

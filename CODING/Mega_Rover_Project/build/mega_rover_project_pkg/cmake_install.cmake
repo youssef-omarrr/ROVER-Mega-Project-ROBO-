@@ -39,8 +39,10 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mega_rover_project_pkg/msg" TYPE FILE FILES
-    "/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src/mega_rover_project_pkg/msg/custom_msg.msg"
     "/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src/mega_rover_project_pkg/msg/SPI_data.msg"
+    "/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src/mega_rover_project_pkg/msg/controller.msg"
+    "/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src/mega_rover_project_pkg/msg/mine.msg"
+    "/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/src/mega_rover_project_pkg/msg/localization_stack.msg"
     )
 endif()
 

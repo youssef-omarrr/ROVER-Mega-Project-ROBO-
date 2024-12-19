@@ -1,0 +1,16 @@
+<launch>
+  <!-- Launch IMU Publisher -->
+  <node pkg="mega_rover_project_pkg" type="imu.py" name="imu_stub" output="screen" />
+
+  <!-- Launch Encoder Publisher -->
+  <node pkg="mega_rover_project_pkg" type="encoders.py" name="encoder_stub" output="screen" />
+
+  <!-- Launch EKF Localization Node -->
+  <include file="$(find mega_rover_project_pkg)/launch/ekf_localization.launch" />
+
+  <!-- Launch Filtered Values Presenter -->
+  <node pkg="mega_rover_project_pkg" type="filtered_values_presenterTest.py" name="filtered_values_presenter" output="screen" />
+
+  <!-- Launch ROSbridge Websocket Server -->
+  <include file= "$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+</launch>

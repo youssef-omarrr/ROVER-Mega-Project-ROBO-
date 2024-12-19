@@ -3,6 +3,8 @@
 import rospy
 import spidev
 from mega_rover_project_pkg.msg import SPI_data
+# Receive Mine Flag via SPI -> Publish at 'rostoweb/mine' topic with 'mine' custom message
+from mega_rover_project_pkg.msg import mine
 
 class SPIReceiver:
     def __init__(self):
@@ -35,6 +37,7 @@ class SPIReceiver:
         # Print the received data
         rospy.loginfo(f"Received data from SPI: {received_data}")
 
+        
         # Save the data
         msg = SPI_data()
         msg.SPI_get = received_data
