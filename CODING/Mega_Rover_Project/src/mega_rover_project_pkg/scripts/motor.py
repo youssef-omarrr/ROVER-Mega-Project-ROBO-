@@ -63,17 +63,17 @@ class MotorController:
         rospy.loginfo(f"Received controller data: L3X={l3x}, L3Y={l3y}")
 
         # Calculate RMS of L3X and L3Y values
-        speed = math.sqrt((l3x ** 2 + l3y ** 2) / 2)
+        speed = math.sqrt(l3x ** 2 + l3y ** 2)
         
         # Ensure speed is within the 0-255 range
         speed = int(min(max(speed, 0), 255))
         
         # Move forward (+x, +y) if L3X and L3Y are both positive
-        if l3x > 0 and abs(l3y) < 10:  # Small y value to differentiate forward
+        if l3y > 0 and abs(l3x) < 10:  # Small y value to differentiate forward
             self.move_forward(speed)
         
         # Move backward (-x, -y) if L3X and L3Y are both negative
-        elif l3x < 0 and abs(l3y) < 10:  # Small y value to differentiate backward
+        elif l3y < 0 and abs(l3x) < 10:  # Small y value to differentiate backward
             self.move_backward(speed)
         
         # Move right (+x, y) if only L3X is positive and L3Y is small
@@ -84,21 +84,21 @@ class MotorController:
         elif l3x < 0 and abs(l3y) < 10:
             self.move_left(speed)
         
-        # Forward-Right Movement (+x, +y)
-        elif l3x > 0 and l3y > 0:
-            self.move_forward_right(speed)
+        # # Forward-Right Movement (+x, +y)
+        # elif l3x > 0 and l3y > 0:
+        #     self.move_forward_right(speed)
         
-        # Backward-Right Movement (+x, -y)
-        elif l3x > 0 and l3y < 0:
-            self.move_backward_right(speed)
+        # # Backward-Right Movement (+x, -y)
+        # elif l3x > 0 and l3y < 0:
+        #     self.move_backward_right(speed)
         
-        # Forward-Left Movement (-x, +y)
-        elif l3x < 0 and l3y > 0:
-            self.move_forward_left(speed)
+        # # Forward-Left Movement (-x, +y)
+        # elif l3x < 0 and l3y > 0:
+        #     self.move_forward_left(speed)
         
-        # Backward-Left Movement (-x, -y)
-        elif l3x < 0 and l3y < 0:
-            self.move_backward_left(speed)
+        # # Backward-Left Movement (-x, -y)
+        # elif l3x < 0 and l3y < 0:
+        #     self.move_backward_left(speed)
 
         # Stop if no meaningful movement detected
         else:
@@ -118,20 +118,20 @@ class MotorController:
     def move_forward(self, speed):
         """Move the rover forward with specified speed"""
         GPIO.output(self.motor_pins['motor1_dir'], GPIO.HIGH)
-        GPIO.output(self.motor_pins['motor2_dir'], GPIO.LOW)
+        GPIO.output(self.motor_pins['motor2_dir'], GPIO.HIGH)
         
         GPIO.output(self.motor_pins['motor3_dir'], GPIO.HIGH)
-        GPIO.output(self.motor_pins['motor4_dir'], GPIO.LOW)
+        GPIO.output(self.motor_pins['motor4_dir'], GPIO.HIGH)
         
         self.set_motor_speed(speed)
 
     def move_backward(self, speed):
         """Move the rover backward with specified speed"""
         GPIO.output(self.motor_pins['motor1_dir'], GPIO.LOW)
-        GPIO.output(self.motor_pins['motor2_dir'], GPIO.HIGH)
+        GPIO.output(self.motor_pins['motor2_dir'], GPIO.LOW)
         
         GPIO.output(self.motor_pins['motor3_dir'], GPIO.LOW)
-        GPIO.output(self.motor_pins['motor4_dir'], GPIO.HIGH)
+        GPIO.output(self.motor_pins['motor4_dir'], GPIO.LOW)
         
         self.set_motor_speed(speed)
 
@@ -140,8 +140,8 @@ class MotorController:
         GPIO.output(self.motor_pins['motor1_dir'], GPIO.HIGH)
         GPIO.output(self.motor_pins['motor2_dir'], GPIO.LOW)
         
-        GPIO.output(self.motor_pins['motor3_dir'], GPIO.LOW)
-        GPIO.output(self.motor_pins['motor4_dir'], GPIO.HIGH)
+        GPIO.output(self.motor_pins['motor3_dir'], GPIO.HIGH)
+        GPIO.output(self.motor_pins['motor4_dir'], GPIO.LOW)
         
         self.set_motor_speed(speed)
         
@@ -150,8 +150,8 @@ class MotorController:
         GPIO.output(self.motor_pins['motor1_dir'], GPIO.LOW)
         GPIO.output(self.motor_pins['motor2_dir'], GPIO.HIGH)
         
-        GPIO.output(self.motor_pins['motor3_dir'], GPIO.HIGH)
-        GPIO.output(self.motor_pins['motor4_dir'], GPIO.LOW)
+        GPIO.output(self.motor_pins['motor3_dir'], GPIO.LOW)
+        GPIO.output(self.motor_pins['motor4_dir'], GPIO.HIGH)
         
         self.set_motor_speed(speed)
         

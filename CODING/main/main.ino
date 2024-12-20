@@ -3,7 +3,6 @@
 //////////////////////////////////////////////////////////
 #include "mSPI.h"
 #include "metal_detector.h"
-#include "rover.h" // Include the Rover header file
 
 //////////////////////////////////////////////////////////
 /////////////      PIN definations         ///////////////
@@ -18,20 +17,6 @@
 #define SENSOR_PIN 2
 #define BUZZER_PIN 3
 
-// Pin Definitions for Rover motors
-// Motor1
-#define MOTOR1_DIR 6
-#define MOTOR1_PWM 9
-// Motor2
-#define MOTOR2_DIR 7
-#define MOTOR2_PWM 10
-// Motor3
-#define MOTOR3_DIR 8
-#define MOTOR3_PWM 11
-// Motor4
-#define MOTOR4_DIR 12
-#define MOTOR4_PWM 13
-
 //////////////////////////////////////////////////////////
 /////////////       Classes inits          ///////////////
 //////////////////////////////////////////////////////////
@@ -40,15 +25,6 @@ mSPI spi(PIN_MOSI, PIN_MISO, PIN_SCLK, PIN_CS);
 
 // Init the MetalDetector object
 MetalDetector metalDetector(SENSOR_PIN, BUZZER_PIN);
-
-// Init the Motor objects
-Motor motor1(MOTOR1_DIR, MOTOR1_PWM);
-Motor motor2(MOTOR2_DIR, MOTOR2_PWM);
-Motor motor3(MOTOR3_DIR, MOTOR3_PWM);
-Motor motor4(MOTOR4_DIR, MOTOR4_PWM);
-
-// Init the Rover object
-Rover rover(motor1, motor2, motor3, motor4);
 
 //////////////////////////////////////////////////////////
 /////////////            MAIN              ///////////////
@@ -81,33 +57,6 @@ void loop() {
   Serial.print(", L3y: ");
   Serial.println(L3y);
 
-  // Calculate RMS of L3x and L3y values
-  float speed = sqrt((L3x * L3x + L3y * L3y) / 2.0);
-
-  // Ensure speed is within the 0-255 range
-  speed = (char) constrain(speed, 0, 255);
-
-  // Move forward (+x, +y) if L3x and L3y are both positive
-  if (L3x > 0 && abs(L3y) < 10) { // Small y value to differentiate forward
-    rover.move_forward(speed);
-  }
-  // Move backward (-x, -y) if L3x and L3y are both negative
-  else if (L3x < 0 && abs(L3y) < 10) { // Small y value to differentiate backward
-    rover.move_backward(speed);
-  }
-  // Move right (+x, y) if only L3x is positive and L3y is small
-  else if (L3x > 0 && abs(L3y) < 10) {
-    rover.move_right(speed);
-  }
-  // Move left (-x, y) if only L3x is negative and L3y is small
-  else if (L3x < 0 && abs(L3y) < 10) {
-    rover.move_left(speed);
-  }
-  // Stop if no meaningful movement detected
-  else {
-    rover.stop();
-  }
-
   // Check for metal detection
   if (metalDetector.handleDetection()) {
     // Send a flag (1) via SPI to indicate metal is detected
@@ -124,5 +73,5 @@ void loop() {
   }
 
   // Small delay to avoid spamming
-  delay(500);
+  delay(50);
 }
