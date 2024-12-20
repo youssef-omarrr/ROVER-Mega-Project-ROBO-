@@ -60,6 +60,9 @@ class MotorController:
         l3x = msg.L3X
         l3y = msg.L3Y
         
+        l3x = map(l3x, -1, 1, -255, 255)
+        l3y = map(l3y , -1, 1, -255, 255)
+        
         rospy.loginfo(f"Received controller data: L3X={l3x}, L3Y={l3y}")
 
         # Calculate RMS of L3X and L3Y values
