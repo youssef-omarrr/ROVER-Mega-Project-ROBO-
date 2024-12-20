@@ -9,7 +9,7 @@ This Python script initializes a ROS node that listens for SPI data and publishe
 5. Logs the received mine flag and publishes it as a 'mine' message to the 'rostoweb/mine' topic.
 6. If SPI connection fails, switches to simulation mode and logs the failure.
 '''
-import rospy
+import rospy # type: ignore
 import spidev
 from mega_rover_project_pkg.msg import SPI_data
 from mega_rover_project_pkg.msg import mine

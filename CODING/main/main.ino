@@ -4,7 +4,6 @@
 #include "mSPI.h"
 #include "metal_detector.h"
 
-
 //////////////////////////////////////////////////////////
 /////////////      PIN definations         ///////////////
 //////////////////////////////////////////////////////////
@@ -27,7 +26,6 @@ mSPI spi(PIN_MOSI, PIN_MISO, PIN_SCLK, PIN_CS);
 // Init the MetalDetector object
 MetalDetector metalDetector(SENSOR_PIN, BUZZER_PIN);
 
-
 //////////////////////////////////////////////////////////
 /////////////            MAIN              ///////////////
 //////////////////////////////////////////////////////////
@@ -38,33 +36,42 @@ void setup() {
   // Init SPI and metal detector
   spi.begin();
   metalDetector.begin();
-  
-  Serial.println("Setup complete. Testing SPI and Metal Detector...");
+
+  // Init Rover motors
+  motor1.init_motor();
+  motor2.init_motor();
+  motor3.init_motor();
+  motor4.init_motor();
+
+  Serial.println("Setup complete. Testing SPI, Metal Detector, and Rover...");
 }
 
 void loop() {
-  // Test SPI
-  uint8_t L3X = spi.receive_data();
-  uint8_t L3Y = spi.receive_data();
-  
-  // Print received data
-  Serial.print("Received L3X: ");
-  Serial.print(L3X);
-  Serial.print(", L3Y: ");
-  Serial.println(L3Y);
+  // Receive joystick data
+  uint8_t L3x = spi.receive_data();
+  uint8_t L3y = spi.receive_data();
 
-  if (metalDetected.handleDetection()) {
+  // Print received data
+  Serial.print("Received L3x: ");
+  Serial.print(L3x);
+  Serial.print(", L3y: ");
+  Serial.println(L3y);
+
+  // Check for metal detection
+  if (metalDetector.handleDetection()) {
     // Send a flag (1) via SPI to indicate metal is detected
     uint8_t detectionFlag = 1; // Metal detected
     spi.send_data(detectionFlag);
-    
+
     Serial.println("Metal detected! Flag sent via SPI.");
-  } 
-  else {    
+  } else {
+    // Send a flag (0) via SPI to indicate no metal detected
+    uint8_t detectionFlag = 0; // No metal detected
+    spi.send_data(detectionFlag);
 
     Serial.println("No metal detected. Flag sent via SPI.");
   }
 
   // Small delay to avoid spamming
-  delay(500);
+  delay(50);
 }

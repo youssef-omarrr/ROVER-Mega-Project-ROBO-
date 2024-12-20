@@ -16,12 +16,11 @@ The script combines encoder data and IMU yaw to estimate and publish the robot's
 '''
 
 
-
-import rospy
-from nav_msgs.msg import Odometry
-from geometry_msgs.msg import Quaternion
-from std_msgs.msg import Float64
-from std_msgs.msg import Float32
+import rospy # type: ignore
+from nav_msgs.msg import Odometry # type: ignore
+from geometry_msgs.msg import Quaternion # type: ignore
+from std_msgs.msg import Float64 # type: ignore
+from std_msgs.msg import Float32 # type: ignore
 import RPi.GPIO as GPIO
 import math
 

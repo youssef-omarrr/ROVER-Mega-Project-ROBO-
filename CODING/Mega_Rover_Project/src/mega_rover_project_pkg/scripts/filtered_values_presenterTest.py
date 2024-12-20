@@ -8,8 +8,8 @@
 
 '''
 
-import rospy
-from nav_msgs.msg import Odometry
+import rospy # type: ignore
+from nav_msgs.msg import Odometry # type: ignore
 import math
 
 class FilteredOdometryPresenter:

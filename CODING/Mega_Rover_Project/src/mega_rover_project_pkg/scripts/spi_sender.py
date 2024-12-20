@@ -11,7 +11,7 @@ This Python script initializes a ROS node that sends SPI data based on controlle
 6. Publishes the sent data in an 'SPI_data' message to the 'spi_send_topic'.
 7. If SPI initialization fails, switches to simulation mode and logs the failure.
 '''
-import rospy
+import rospy # type: ignore
 import spidev
 from mega_rover_project_pkg.msg import SPI_data
 from mega_rover_project_pkg.msg import controller

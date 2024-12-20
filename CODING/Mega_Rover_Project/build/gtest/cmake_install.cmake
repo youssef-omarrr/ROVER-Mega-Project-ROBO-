@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/install")
+  set(CMAKE_INSTALL_PREFIX "/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/mnt/d/ROBOTECH/FINAL PROJECT/CODING/Mega_Rover_Project/build/gtest/googlemock/cmake_install.cmake")
+  include("/home/fairymido/Work/ROVER-Mega-Project-ROBO-/CODING/Mega_Rover_Project/build/gtest/googlemock/cmake_install.cmake")
 
 endif()
 

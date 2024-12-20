@@ -1,3 +1,4 @@
+#include "esp32-hal-gpio.h"
 #include <Arduino.h>
 #include "metal_detector.h"
 
@@ -20,17 +21,17 @@ void MetalDetector::handleDetection() {
   int sensorValue = analogRead(sensorPIN);
 
   // Map the sensor value to a PWM range (0 to 255)
-  int pwmValue = map(sensorValue, 0, 1023, 0, 255);  // Adjust as needed based on the sensor's range
+  int pwmValue = map(sensorValue, 0, 1023, 0, 1);  // Adjust as needed based on the sensor's range
 
   // If the sensor is detecting metal, control the buzzer with the PWM value
   if (sensorValue > tolerance) {  // If sensor is detecting metal
     Serial.print("Metal detected! PWM Value: ");
     Serial.print("sensor value = ");
     Serial.println(sensorValue);
-    analogWrite(buzzerPIN, pwmValue);  // Control the buzzer intensity based on the sensor reading
+    digitalWrite(buzzerPIN, pwmValue);  // Control the buzzer intensity based on the sensor reading
     return true;
   } else {
-    analogWrite(buzzerPIN, 0);  // No metal detected, turn off the buzzer
+    digitalWrite(buzzerPIN, 0);  // No metal detected, turn off the buzzer
     return false;
   }
 }
