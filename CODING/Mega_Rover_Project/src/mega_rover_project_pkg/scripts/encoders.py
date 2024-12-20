@@ -144,7 +144,7 @@ class EncoderStub:
 if __name__ == '__main__':
     hall_pins = [17, 27, 22]
     wheel_diameter = 0.1
-    counts_per_rev = 20
+    counts_per_rev = 92
 
     encoder = Encoder(hall_pins, wheel_diameter, counts_per_rev)
     try:
@@ -155,5 +155,5 @@ if __name__ == '__main__':
         pass
     finally:
         # Clean All GPIO PIns
-        # encoder.cleanup()
+        encoder.cleanup()
         pass

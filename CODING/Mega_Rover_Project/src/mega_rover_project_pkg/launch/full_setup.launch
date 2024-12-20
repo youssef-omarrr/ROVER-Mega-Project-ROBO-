@@ -11,6 +11,18 @@
   <!-- Launch Filtered Values Presenter -->
   <node pkg="mega_rover_project_pkg" type="filtered_values_presenterTest.py" name="filtered_values_presenter" output="screen" />
 
+  <!-- Launch Localization Stack Node -->
+  <node pkg="mega_rover_project_pkg" type="localization_stack.py" name="localization_stack_node" output="screen" />
+
+  <!-- Launch SPI Sender Node -->
+  <node pkg="mega_rover_project_pkg" type="spi_sender.py" name="spi_sender" output="screen" />
+
+  <!-- Launch SPI Receiver Node -->
+  <node pkg="mega_rover_project_pkg" type="spi_receiver.py" name="spi_receiver" output="screen" />
+
+  <!-- Launch Motor Node -->
+  <node pkg="mega_rover_project_pkg" type="motor.py" name="motor_controller" output="screen" />
+
   <!-- Launch ROSbridge Websocket Server -->
   <include file= "$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
 

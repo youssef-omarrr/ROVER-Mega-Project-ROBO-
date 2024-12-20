@@ -12,11 +12,6 @@
     :initarg :num
     :type cl:integer
     :initform 0)
-   (weight
-    :reader weight
-    :initarg :weight
-    :type cl:integer
-    :initform 0)
    (x
     :reader x
     :initarg :x
@@ -42,11 +37,6 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader mega_rover_project_pkg-msg:num-val is deprecated.  Use mega_rover_project_pkg-msg:num instead.")
   (num m))
 
-(cl:ensure-generic-function 'weight-val :lambda-list '(m))
-(cl:defmethod weight-val ((m <localization_stack>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader mega_rover_project_pkg-msg:weight-val is deprecated.  Use mega_rover_project_pkg-msg:weight instead.")
-  (weight m))
-
 (cl:ensure-generic-function 'x-val :lambda-list '(m))
 (cl:defmethod x-val ((m <localization_stack>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader mega_rover_project_pkg-msg:x-val is deprecated.  Use mega_rover_project_pkg-msg:x instead.")
@@ -59,16 +49,6 @@
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <localization_stack>) ostream)
   "Serializes a message object of type '<localization_stack>"
   (cl:let* ((signed (cl:slot-value msg 'num)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 18446744073709551616) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 32) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 40) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 48) unsigned) ostream)
-    (cl:write-byte (cl:ldb (cl:byte 8 56) unsigned) ostream)
-    )
-  (cl:let* ((signed (cl:slot-value msg 'weight)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 18446744073709551616) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
@@ -109,16 +89,6 @@
       (cl:setf (cl:ldb (cl:byte 8 48) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'num) (cl:if (cl:< unsigned 9223372036854775808) unsigned (cl:- unsigned 18446744073709551616))))
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 32) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 40) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 48) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:ldb (cl:byte 8 56) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'weight) (cl:if (cl:< unsigned 9223372036854775808) unsigned (cl:- unsigned 18446744073709551616))))
     (cl:let ((bits 0))
       (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
@@ -149,19 +119,18 @@
   "mega_rover_project_pkg/localization_stack")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<localization_stack>)))
   "Returns md5sum for a message object of type '<localization_stack>"
-  "cf770bec3959fa3ea8bb506b0d23db4e")
+  "9e13670056d980e4c39c3686f3ee472c")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'localization_stack)))
   "Returns md5sum for a message object of type 'localization_stack"
-  "cf770bec3959fa3ea8bb506b0d23db4e")
+  "9e13670056d980e4c39c3686f3ee472c")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<localization_stack>)))
   "Returns full string definition for message of type '<localization_stack>"
-  (cl:format cl:nil "int64 num~%int64 weight~%float64 x~%float64 y~%~%"))
+  (cl:format cl:nil "int64 num~%float64 x~%float64 y~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'localization_stack)))
   "Returns full string definition for message of type 'localization_stack"
-  (cl:format cl:nil "int64 num~%int64 weight~%float64 x~%float64 y~%~%"))
+  (cl:format cl:nil "int64 num~%float64 x~%float64 y~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <localization_stack>))
   (cl:+ 0
-     8
      8
      8
      8
@@ -170,7 +139,6 @@
   "Converts a ROS message object to a list"
   (cl:list 'localization_stack
     (cl:cons ':num (num msg))
-    (cl:cons ':weight (weight msg))
     (cl:cons ':x (x msg))
     (cl:cons ':y (y msg))
 ))

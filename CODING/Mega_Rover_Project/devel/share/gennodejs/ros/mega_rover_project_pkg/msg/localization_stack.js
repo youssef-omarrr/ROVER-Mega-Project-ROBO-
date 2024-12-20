@@ -19,7 +19,6 @@ class localization_stack {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.num = null;
-      this.weight = null;
       this.x = null;
       this.y = null;
     }
@@ -29,12 +28,6 @@ class localization_stack {
       }
       else {
         this.num = 0;
-      }
-      if (initObj.hasOwnProperty('weight')) {
-        this.weight = initObj.weight
-      }
-      else {
-        this.weight = 0;
       }
       if (initObj.hasOwnProperty('x')) {
         this.x = initObj.x
@@ -55,8 +48,6 @@ class localization_stack {
     // Serializes a message object of type localization_stack
     // Serialize message field [num]
     bufferOffset = _serializer.int64(obj.num, buffer, bufferOffset);
-    // Serialize message field [weight]
-    bufferOffset = _serializer.int64(obj.weight, buffer, bufferOffset);
     // Serialize message field [x]
     bufferOffset = _serializer.float64(obj.x, buffer, bufferOffset);
     // Serialize message field [y]
@@ -70,8 +61,6 @@ class localization_stack {
     let data = new localization_stack(null);
     // Deserialize message field [num]
     data.num = _deserializer.int64(buffer, bufferOffset);
-    // Deserialize message field [weight]
-    data.weight = _deserializer.int64(buffer, bufferOffset);
     // Deserialize message field [x]
     data.x = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [y]
@@ -80,7 +69,7 @@ class localization_stack {
   }
 
   static getMessageSize(object) {
-    return 32;
+    return 24;
   }
 
   static datatype() {
@@ -90,14 +79,13 @@ class localization_stack {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'cf770bec3959fa3ea8bb506b0d23db4e';
+    return '9e13670056d980e4c39c3686f3ee472c';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     int64 num
-    int64 weight
     float64 x
     float64 y
     `;
@@ -114,13 +102,6 @@ class localization_stack {
     }
     else {
       resolved.num = 0
-    }
-
-    if (msg.weight !== undefined) {
-      resolved.weight = msg.weight;
-    }
-    else {
-      resolved.weight = 0
     }
 
     if (msg.x !== undefined) {

@@ -8,15 +8,14 @@ import struct
 
 
 class localization_stack(genpy.Message):
-  _md5sum = "cf770bec3959fa3ea8bb506b0d23db4e"
+  _md5sum = "9e13670056d980e4c39c3686f3ee472c"
   _type = "mega_rover_project_pkg/localization_stack"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """int64 num
-int64 weight
 float64 x
 float64 y"""
-  __slots__ = ['num','weight','x','y']
-  _slot_types = ['int64','int64','float64','float64']
+  __slots__ = ['num','x','y']
+  _slot_types = ['int64','float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -26,7 +25,7 @@ float64 y"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       num,weight,x,y
+       num,x,y
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -37,15 +36,12 @@ float64 y"""
       # message fields cannot be None, assign default values for those that are
       if self.num is None:
         self.num = 0
-      if self.weight is None:
-        self.weight = 0
       if self.x is None:
         self.x = 0.
       if self.y is None:
         self.y = 0.
     else:
       self.num = 0
-      self.weight = 0
       self.x = 0.
       self.y = 0.
 
@@ -62,7 +58,7 @@ float64 y"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2q2d().pack(_x.num, _x.weight, _x.x, _x.y))
+      buff.write(_get_struct_q2d().pack(_x.num, _x.x, _x.y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -77,8 +73,8 @@ float64 y"""
       end = 0
       _x = self
       start = end
-      end += 32
-      (_x.num, _x.weight, _x.x, _x.y,) = _get_struct_2q2d().unpack(str[start:end])
+      end += 24
+      (_x.num, _x.x, _x.y,) = _get_struct_q2d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -92,7 +88,7 @@ float64 y"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2q2d().pack(_x.num, _x.weight, _x.x, _x.y))
+      buff.write(_get_struct_q2d().pack(_x.num, _x.x, _x.y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -108,8 +104,8 @@ float64 y"""
       end = 0
       _x = self
       start = end
-      end += 32
-      (_x.num, _x.weight, _x.x, _x.y,) = _get_struct_2q2d().unpack(str[start:end])
+      end += 24
+      (_x.num, _x.x, _x.y,) = _get_struct_q2d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -118,9 +114,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2q2d = None
-def _get_struct_2q2d():
-    global _struct_2q2d
-    if _struct_2q2d is None:
-        _struct_2q2d = struct.Struct("<2q2d")
-    return _struct_2q2d
+_struct_q2d = None
+def _get_struct_q2d():
+    global _struct_q2d
+    if _struct_q2d is None:
+        _struct_q2d = struct.Struct("<q2d")
+    return _struct_q2d

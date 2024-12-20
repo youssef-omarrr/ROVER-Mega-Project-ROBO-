@@ -25,13 +25,11 @@ struct localization_stack_
 
   localization_stack_()
     : num(0)
-    , weight(0)
     , x(0.0)
     , y(0.0)  {
     }
   localization_stack_(const ContainerAllocator& _alloc)
     : num(0)
-    , weight(0)
     , x(0.0)
     , y(0.0)  {
   (void)_alloc;
@@ -41,9 +39,6 @@ struct localization_stack_
 
    typedef int64_t _num_type;
   _num_type num;
-
-   typedef int64_t _weight_type;
-  _weight_type weight;
 
    typedef double _x_type;
   _x_type x;
@@ -81,7 +76,6 @@ template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::mega_rover_project_pkg::localization_stack_<ContainerAllocator1> & lhs, const ::mega_rover_project_pkg::localization_stack_<ContainerAllocator2> & rhs)
 {
   return lhs.num == rhs.num &&
-    lhs.weight == rhs.weight &&
     lhs.x == rhs.x &&
     lhs.y == rhs.y;
 }
@@ -140,12 +134,12 @@ struct MD5Sum< ::mega_rover_project_pkg::localization_stack_<ContainerAllocator>
 {
   static const char* value()
   {
-    return "cf770bec3959fa3ea8bb506b0d23db4e";
+    return "9e13670056d980e4c39c3686f3ee472c";
   }
 
   static const char* value(const ::mega_rover_project_pkg::localization_stack_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xcf770bec3959fa3eULL;
-  static const uint64_t static_value2 = 0xa8bb506b0d23db4eULL;
+  static const uint64_t static_value1 = 0x9e13670056d980e4ULL;
+  static const uint64_t static_value2 = 0xc39c3686f3ee472cULL;
 };
 
 template<class ContainerAllocator>
@@ -165,7 +159,6 @@ struct Definition< ::mega_rover_project_pkg::localization_stack_<ContainerAlloca
   static const char* value()
   {
     return "int64 num\n"
-"int64 weight\n"
 "float64 x\n"
 "float64 y\n"
 ;
@@ -187,7 +180,6 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.num);
-      stream.next(m.weight);
       stream.next(m.x);
       stream.next(m.y);
     }
@@ -210,8 +202,6 @@ struct Printer< ::mega_rover_project_pkg::localization_stack_<ContainerAllocator
   {
     s << indent << "num: ";
     Printer<int64_t>::stream(s, indent + "  ", v.num);
-    s << indent << "weight: ";
-    Printer<int64_t>::stream(s, indent + "  ", v.weight);
     s << indent << "x: ";
     Printer<double>::stream(s, indent + "  ", v.x);
     s << indent << "y: ";
