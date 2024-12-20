@@ -12,10 +12,10 @@ Subscribe to 'odometry/filtered and Read (x,y)
 Add to a Localization Stack 
 Publish to a Localization Stack Node
 '''
-import rospy
+import rospy # type: ignore
 from mega_rover_project_pkg.msg import mine
 from mega_rover_project_pkg import localization_stack
-from nav_msgs.msg import Odometry
+from nav_msgs.msg import Odometry # type: ignore
 import math
 
 class LocalizationStack:

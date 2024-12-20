@@ -11,7 +11,7 @@
 
 '''
 
-import rospy
+import rospy # type: ignore
 from mega_rover_project_pkg.msg import controller
 import RPi.GPIO as GPIO
 import math

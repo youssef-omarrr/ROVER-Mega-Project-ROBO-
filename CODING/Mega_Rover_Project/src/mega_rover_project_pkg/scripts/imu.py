@@ -14,13 +14,13 @@ The script collects and publishes IMU and yaw data,
 with a fallback for testing when the sensor is unavailable.
 """
 
-import rospy
-from std_msgs.msg import Float64
-from std_msgs.msg import Float32
-from sensor_msgs.msg import Imu
-import board
-import busio
-import adafruit_mpu6050
+import rospy # type: ignore
+from std_msgs.msg import Float64 # type: ignore
+from std_msgs.msg import Float32 # type: ignore
+from sensor_msgs.msg import Imu # type: ignore
+import board # type: ignore
+import busio # type: ignore
+import adafruit_mpu6050 # type: ignore
 import time
 import random
 
